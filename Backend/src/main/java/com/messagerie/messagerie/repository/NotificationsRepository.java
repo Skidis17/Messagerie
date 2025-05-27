@@ -11,10 +11,5 @@ import java.util.Optional;
 
 @Repository
 public interface NotificationsRepository extends JpaRepository<Notifications, Integer> {
-    List<Notifications> findByUtilisateur(Utilisateurs utilisateur);
-    List<Notifications> findByVueFalseAndUtilisateur(Utilisateurs utilisateur);
-    List<Notifications> findByUserIdAndVueFalseOrderByDateCreationDesc(int userId);
 
-
-    Optional<Notification> findById(Long notificationId);
 }

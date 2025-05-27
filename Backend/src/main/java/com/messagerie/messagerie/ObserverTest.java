@@ -3,7 +3,7 @@ package com.messagerie.messagerie;
 import com.messagerie.messagerie.model.Messages;
 import com.messagerie.messagerie.model.Utilisateurs;
 
-public class Test {
+public class ObserverTest {
 
     public static void main(String[] args) {
 
@@ -12,7 +12,7 @@ public class Test {
         user1.setNom("Soldat Jean");
 
         Utilisateurs user2 = new Utilisateurs();
-        user2.setNom("Commandant Pierre");
+        user2.setNom("sadki ");
 
         // Create a message (observable)
         Messages message = new Messages();

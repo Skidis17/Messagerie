@@ -1,19 +1,24 @@
 package com.messagerie.messagerie.service;
 
-import com.messagerie.messagerie.model.Messages;
 import com.messagerie.messagerie.model.Utilisateurs;
+import com.messagerie.messagerie.repository.UtilisateursRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommandantService {
 
-    private final Utilisateurs utilisateur;
+    private final UtilisateursRepository utilisateursRepository;
 
-    public CommandantService(Utilisateurs utilisateur) {
-        this.utilisateur = utilisateur;
+    public CommandantService(UtilisateursRepository utilisateursRepository) {
+        this.utilisateursRepository = utilisateursRepository;
     }
 
-    public void seConnecter() {
+    public Utilisateurs getById(Long id) {
+        return utilisateursRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Utilisateur not found"));
+    }
+
+    public void seConnecter(Utilisateurs utilisateur) {
         System.out.println("[Commandant] " + utilisateur.getNom() + " connecté.");
     }
 
@@ -43,7 +48,7 @@ public class CommandantService {
         System.out.println("[Commandant] Accès à l'interface commandant.");
     }
 
-    public void actualiser(String message) {
+    public void actualiser(Utilisateurs utilisateur, String message) {
         utilisateur.actualiser(message);
     }
 }

@@ -101,7 +101,10 @@ public class Messages implements Observable {
     private String contenu;
     private LocalDateTime dateEnvoi;
 
-    @Transient // Don't persist this list
+
+
+    //Observer Pattern
+    @Transient
     private List<Observer> observers = new ArrayList<>();
 
     @Override
@@ -120,9 +123,8 @@ public class Messages implements Observable {
             o.actualiser(message);
         }
     }
-    // When sending a message, call notifier()
+
     public void envoyerNotification() {
-        // some logic to save message or trigger sending
         notifier("Nouveau message de " + expediteur.getNom() + " à " +
                 (destinataire != null ? destinataire.getNom() : "groupe"));
     }

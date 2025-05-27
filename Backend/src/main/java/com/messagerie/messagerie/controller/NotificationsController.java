@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/notifications")
 public class NotificationsController {
 
-    @Autowired
-    private NotificationsRepository notificationRepository;
-
-
+//    @Autowired
+//    private NotificationsRepository notificationRepository;
+@GetMapping("/test")
+public String test() {
+    return "API is working!";
 }
+}
+
