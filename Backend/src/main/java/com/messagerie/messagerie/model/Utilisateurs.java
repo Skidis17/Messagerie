@@ -23,7 +23,6 @@ public class Utilisateurs implements Observer{
     @Override
     public void actualiser(String message) {
         System.out.println("[" + nom + "] Nouvelle notification : " + message);
-        // In a real app, store this in a notification list or send to front end
     }
 
     public String getMdp() {

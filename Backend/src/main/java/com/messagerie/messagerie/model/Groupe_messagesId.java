@@ -10,20 +10,16 @@ import java.util.Objects;
 @Getter
 public class Groupe_messagesId implements Serializable {
 
-    // Getters and setters
-    private Integer utilisateur; // Must match type & name of @Id fields in entity
+    private Integer utilisateur;
     private Integer groupe;
 
-    // Default constructor
     public Groupe_messagesId() {}
 
-    // Optional: Constructor with parameters
     public Groupe_messagesId(Integer utilisateur, Integer groupe) {
         this.utilisateur = utilisateur;
         this.groupe = groupe;
     }
 
-    // equals and hashCode are required
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

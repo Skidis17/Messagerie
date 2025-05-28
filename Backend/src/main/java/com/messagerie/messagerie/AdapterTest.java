@@ -1,43 +1,28 @@
 package com.messagerie.messagerie;
 
-import com.messagerie.messagerie.pattern.adapter.Adapter;
-import com.messagerie.messagerie.pattern.adapter.SimpleEncryptionAdapter;
-import com.messagerie.messagerie.pattern.adapter.Standard;
+import com.messagerie.messagerie.pattern.adapter.*;
 
+import java.util.Arrays;
 
 public class AdapterTest {
-
     public static void main(String[] args) throws Exception {
-        String message = "Mission is completed comradess";
+        String message = "Ceuta is ours!";
+        byte[] original = message.getBytes();
 
-        // Soldat -> Soldat (AES)
-        Standard soldatToSoldat = new Adapter("AES");
-        testEncryption("Soldat -> Soldat (AES)", soldatToSoldat, message);
+        System.out.println("== AES Test ==");
+        Standard aes = new AESEncryptionAdapter();
+        byte[] encryptedAES = aes.chiffrer(original);
+        byte[] decryptedAES = aes.dechiffrer(encryptedAES);
+        System.out.println("Decrypted AES: " + new String(encryptedAES));
 
-        // Commandant -> Soldat (RSA)
-        Standard commandantToSoldat = new Adapter("RSA");
-        testEncryption("Commandant -> Soldat (RSA)", commandantToSoldat, message);
+        System.out.println("\n== RSA Test ==");
+        Standard rsa = new RSAEncryptionAdapter();
+        byte[] encryptedRSA = rsa.chiffrer(original);
+        byte[] decryptedRSA = rsa.dechiffrer(encryptedRSA);
+        System.out.println("Decrypted RSA: " + new String(encryptedAES));
 
-        // Commandant -> Groupe (No encryption)
-        Standard commandantToGroupe = new SimpleEncryptionAdapter();
-        testEncryption("Commandant -> Groupe (Simple XOR)", commandantToGroupe, message);
+        //cipher is easy no need to test it
+
     }
 
-    private static void testEncryption(String description, Standard adapter, String message) throws Exception {
-        System.out.println("--- " + description + " ---");
-        byte[] encrypted = adapter.chiffrer(message.getBytes());
-        System.out.println("Encrypted (hex): " + bytesToHex(encrypted));
-        byte[] decrypted = adapter.dechiffrer(encrypted);
-        System.out.println("Decrypted: " + new String(decrypted));
-        System.out.println();
-    }
-
-    private static String bytesToHex(byte[] bytes) {
-        StringBuilder sb = new StringBuilder();
-        for (byte b : bytes) {
-            sb.append(String.format("%02X ", b));
-        }
-        return sb.toString();
-    }
 }
-

@@ -24,7 +24,6 @@ public class CommandantService {
 
     public void envoyerMessageGroupe(String contenu) {
         System.out.println("[Commandant] Envoi d'un message de groupe : " + contenu);
-        // ici on créerait un message avec un groupe ciblé
     }
 
     public void envoyerMessageSoldat(Utilisateurs soldat, String contenu) {
@@ -40,7 +39,6 @@ public class CommandantService {
     }
 
     public String dechiffrerMessage(String mes) {
-        // Mock de déchiffrement
         return "Déchiffré: " + mes;
     }
 

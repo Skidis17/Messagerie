@@ -22,9 +22,9 @@ public class AuthController {
         UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
 
         // Populate user info
-        user.put("code", principal.getCode());       // Matricule or identifier
-        user.put("nom", principal.getNom());         // Full name
-        user.put("role", principal.getRole());       // "soldat" or "commandant"
+        user.put("code", principal.getCode());
+        user.put("nom", principal.getNom());
+        user.put("role", principal.getRole());
 
         return user;
     }

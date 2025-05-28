@@ -17,21 +17,17 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Prefix ROLE_ is required by Spring Security
         return Collections.singleton(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
     }
 
-    // Get code (assuming it's a String in Utilisateurs)
     public int getCode() {
         return user.getCode();
     }
 
-    // Get role as String (adjust if using enum)
     public Role getRole() {
         return user.getRole();
     }
 
-    // Get full name (nom)
     public String getNom() {
         return user.getNom();
     }
@@ -43,7 +39,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getNom(); // 'nom' is treated as username
+        return user.getNom();
     }
 
     @Override

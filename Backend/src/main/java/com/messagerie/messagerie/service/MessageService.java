@@ -2,6 +2,8 @@ package com.messagerie.messagerie.service;
 
 import com.messagerie.messagerie.model.Messages;
 import com.messagerie.messagerie.model.Utilisateurs;
+import com.messagerie.messagerie.repository.MessagesRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,15 +11,27 @@ import java.util.List;
 @Service
 public class MessageService {
 
-    public void envoyerMessage(Messages message, List<Utilisateurs> destinataires) {
-        // Save message in DB
+    @Autowired
+    private MessagesRepository messagesRepository;
 
-        // Add observers (destinataires) to message observable
+    public Messages envoyerMessage(Messages message, List<Utilisateurs> destinataires) {
+        // Save message in DB
+        Messages savedMessage = messagesRepository.save(message);
+
         for (Utilisateurs destinataire : destinataires) {
-            message.ajouterObserver(destinataire);
+            savedMessage.ajouterObserver(destinataire);
         }
 
-        // Notify all observers about the new message
-        message.envoyerNotification();
+        savedMessage.envoyerNotification();
+
+        return savedMessage;
+    }
+
+    public List<Messages> getMessagesByDestinataire(Utilisateurs destinataire) {
+        return messagesRepository.findByDestinataire(destinataire);
+    }
+
+    public List<Messages> getMessagesByExpediteur(Utilisateurs expediteur) {
+        return messagesRepository.findByExpediteur(expediteur);
     }
 }

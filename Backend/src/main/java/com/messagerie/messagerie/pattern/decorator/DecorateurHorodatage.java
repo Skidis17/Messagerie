@@ -11,7 +11,7 @@ public class DecorateurHorodatage extends Decorator {
 
     @Override
     public String getContenu() {
-        // Ajout d'un horodatage au contenu
+
         String horodatage = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         return super.getContenu() + " [Horodaté le " + horodatage + "]";
     }
