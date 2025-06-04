@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Remove Pluto font-face block */
+
+@layer base {
+  :root {
+    --background: 140 30% 95%;
+    --foreground: 140 10% 15%;
+
+    --card: 140 30% 95%;
+    --card-foreground: 140 10% 15%;
+
+    --popover: 140 30% 98%;
+    --popover-foreground: 140 10% 15%;
+
+    --primary: 140 50% 25%;
+    --primary-foreground: 140 30% 98%;
+
+    --secondary: 140 15% 35%;
+    --secondary-foreground: 140 30% 98%;
+
+    --muted: 140 30% 90%;
+    --muted-foreground: 140 10% 40%;
+
+    --accent: 140 20% 80%;
+    --accent-foreground: 140 50% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 140 30% 98%;
+
+    --border: 140 10% 75%;
+    --input: 140 10% 75%;
+    --ring: 140 50% 25%;
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 140 30% 20%;
+    --sidebar-foreground: 140 30% 90%;
+    --sidebar-primary: 140 50% 40%;
+    --sidebar-primary-foreground: 140 30% 98%;
+    --sidebar-accent: 140 20% 30%;
+    --sidebar-accent-foreground: 140 30% 90%;
+    --sidebar-border: 140 20% 30%;
+    --sidebar-ring: 140 50% 40%;
+  }
+
+  .dark {
+    --background: 140 30% 10%;
+    --foreground: 140 30% 90%;
+
+    --card: 140 30% 12%;
+    --card-foreground: 140 30% 90%;
+
+    --popover: 140 30% 8%;
+    --popover-foreground: 140 30% 90%;
+
+    --primary: 140 30% 30%;
+    --primary-foreground: 140 30% 98%;
+
+    --secondary: 140 10% 25%;
+    --secondary-foreground: 140 30% 98%;
+
+    --muted: 140 30% 20%;
+    --muted-foreground: 140 10% 70%;
+
+    --accent: 140 10% 25%;
+    --accent-foreground: 140 30% 90%;
+
+    --destructive: 0 62.8% 40.6%;
+    --destructive-foreground: 140 30% 98%;
+
+    --border: 140 10% 25%;
+    --input: 140 10% 25%;
+    --ring: 140 30% 40%;
+    
+    --sidebar-background: 140 10% 15%;
+    --sidebar-foreground: 140 30% 90%;
+    --sidebar-primary: 140 30% 40%;
+    --sidebar-primary-foreground: 140 30% 98%;
+    --sidebar-accent: 140 10% 20%;
+    --sidebar-accent-foreground: 140 30% 90%;
+    --sidebar-border: 140 10% 25%;
+    --sidebar-ring: 140 30% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border font-pluto;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Styles personnalisés pour l'application militaire */
+.encrypted-message {
+  font-family: monospace;
+  letter-spacing: 0.05em;
+}
+
+.military-badge {
+  @apply inline-flex items-center justify-center px-2 py-0.5 rounded text-xs font-medium;
+}
+
+.badge-commander {
+  @apply bg-military-olive text-military-light;
+}
+
+.badge-soldier {
+  @apply bg-military-khaki text-military-dark;
+}
+
+.secure-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.secure-scrollbar::-webkit-scrollbar-track {
+  @apply bg-military-dark/10;
+}
+
+.secure-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-military-khaki/50 rounded;
+}
+
+.secure-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-military-khaki;
+}
+
+/* Animation pour le déchiffrement */
+@keyframes decrypt {
+  from {
+    filter: blur(4px);
+    opacity: 0.7;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.decrypting {
+  animation: decrypt 0.5s forwards;
+}
